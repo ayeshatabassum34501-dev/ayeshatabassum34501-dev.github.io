@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayesha Tabassum - Portfolio</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; margin: 0; padding: 0; color: #333; background-color: #f4f7f6; }
+        header { background: #2c3e50; color: #fff; padding: 3rem 0; text-align: center; }
+        header h1 { margin: 0; font-size: 2.5rem; letter-spacing: 1px; }
+        header p { font-size: 1.2rem; margin-top: 10px; font-weight: 300; }
+        .container { width: 80%; max-width: 900px; margin: auto; overflow: hidden; padding: 2rem 0; }
+        section { background: #fff; padding: 30px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        h2 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; margin-top: 0; }
+        ul { padding-left: 20px; }
+        li { margin-bottom: 10px; }
+        a { color: #3498db; text-decoration: none; font-weight: bold; }
+        a:hover { text-decoration: underline; }
+        footer { text-align: center; padding: 1.5rem; background: #2c3e50; color: #fff; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ayesha Tabassum</h1>
+        <p>Psychology Professional | Human Resources | Researcher</p>
+    </header>
+
+    <div class="container">
+        <section id="about">
+            <h2>About Me</h2>
+            <p>Hello! I am a final-year BS Psychology student with a strong focus on organizational behavior, human resource management, and quantitative research. I am passionate about understanding human behavior to drive positive workplace cultures, effective recruitment strategies, and mental health awareness.</p>
+        </section>
+
+        <section id="experience">
+            <h2>Experience & Projects</h2>
+            <ul>
+                <li><strong>Human Resources Intern</strong> - GAO Tek Inc.</li>
+                <li><strong>Clinical Intern</strong> - Children's Hospital PIMS</li>
+                <li><strong>Student Ambassador</strong> - Young Psychologists Society</li>
+                <li><strong>Undergraduate Research:</strong> "The Role of Psychological Modulation and Emotional Regulation in Pain Perception among Young Adults"</li>
+                <li><strong>Project Management:</strong> "The Memorandum" (Academic short film on workplace HR investigations)</li>
+            </ul>
+        </section>
+
+        <section id="contact">
+            <h2>Get in Touch</h2>
+            <p>Email: <a href="mailto:your.email@example.com">Add your email here</a></p>
+            <p>LinkedIn: <a href="#">Add your LinkedIn link here</a></p>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Ayesha Tabassum. Built with GitHub Pages.</p>
+    </footer>
+</body>
+</html>
