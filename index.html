@@ -1,56 +1,354 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ayesha Tabassum - Portfolio</title>
-    <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; margin: 0; padding: 0; color: #333; background-color: #f4f7f6; }
-        header { background: #2c3e50; color: #fff; padding: 3rem 0; text-align: center; }
-        header h1 { margin: 0; font-size: 2.5rem; letter-spacing: 1px; }
-        header p { font-size: 1.2rem; margin-top: 10px; font-weight: 300; }
-        .container { width: 80%; max-width: 900px; margin: auto; overflow: hidden; padding: 2rem 0; }
-        section { background: #fff; padding: 30px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-        h2 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; margin-top: 0; }
-        ul { padding-left: 20px; }
-        li { margin-bottom: 10px; }
-        a { color: #3498db; text-decoration: none; font-weight: bold; }
-        a:hover { text-decoration: underline; }
-        footer { text-align: center; padding: 1.5rem; background: #2c3e50; color: #fff; margin-top: 20px; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ayesha Tabassum</title>
+<meta name="description" content="Ayesha Tabassum, BS Psychology, International Islamic University. Research, HR, and Clinical Psychology projects."><!--[cite: 4, 5] -->
+<style>
+  :root{
+    --text:#1a1a1a;
+    --muted:#5a5a5a;
+    --link:#1a56db;
+    --link-visited:#5b3fae;
+    --rule:#e3e3e3;
+    --bg:#ffffff;
+    --maxw:920px;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    font-size:15px;
+    line-height:1.55;
+    padding:36px 20px 60px;
+  }
+  a{color:var(--link); text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  a:visited{color:var(--link-visited);}
+  .blue{color:var(--link);}
+  .wrap{max-width:var(--maxw); margin:0 auto;}
+
+  a:focus-visible{outline:2px solid var(--link); outline-offset:2px;}
+
+  /* header block */
+  header{margin-bottom:24px;}
+  .header-top{
+    display:flex; gap:22px; align-items:flex-start; flex-wrap:wrap;
+    margin-bottom:18px;
+  }
+  .avatar{
+    width:112px; height:112px; border-radius:6px;
+    background:#eef1f4; flex-shrink:0;
+    object-fit:cover;
+    border:1px solid var(--rule);
+  }
+  .header-info h1{
+    font-family:Georgia,'Times New Roman',serif;
+    font-size:30px; margin:0 0 6px; font-weight:normal;
+  }
+  .header-info .line{font-size:15px; color:var(--muted); margin:2px 0;}
+  .header-info .line a{color:var(--muted);}
+  .header-info .line a:hover{color:var(--link);}
+
+  .contact-links{
+    margin-top:10px; font-size:14.5px;
+    display:flex; flex-wrap:wrap; gap:4px 0;
+  }
+  .contact-links a{margin-right:14px;}
+  .contact-links .pending{
+    margin-right:14px; color:#b7b7b7; font-style:italic;
+  }
+
+  nav.section-nav{
+    border-top:1px solid var(--rule);
+    border-bottom:1px solid var(--rule);
+    padding:10px 0;
+    font-size:14px;
+    display:flex; flex-wrap:wrap; gap:4px 16px;
+  }
+
+  /* sections */
+  section{margin-top:26px;}
+  h2{
+    font-family:Georgia,'Times New Roman',serif;
+    font-weight:normal;
+    font-size:19px;
+    margin:0 0 10px;
+    padding-bottom:5px;
+    border-bottom:1px solid var(--rule);
+  }
+  p{margin:0 0 14px;}
+  ul{margin:0 0 14px; padding-left:20px;}
+  li{margin-bottom:4px;}
+
+  /* news list */
+  .news-list{list-style:none; padding:0; margin:0;}
+  .news-list li{
+    display:grid; grid-template-columns:70px 1fr; gap:14px;
+    margin-bottom:6px; font-size:15px;
+  }
+  .news-list .date{color:var(--muted); font-size:14px;}
+
+  /* experience */
+  .job{margin-bottom:16px;}
+  .job:last-child{margin-bottom:0;}
+  .job-title{font-weight:600; font-size:15.5px;}
+  .job-meta{color:var(--muted); font-size:14px; margin-bottom:6px;}
+  .job ul{margin-bottom:0;}
+  .tools-line{font-size:14px; color:var(--muted); margin:4px 0 8px;}
+  .tools-line strong{color:var(--text);}
+
+  /* projects */
+  .proj-grid{
+    display:grid; grid-template-columns:1fr 1fr;
+    column-gap:32px; row-gap:18px;
+  }
+  @media (max-width:720px){ .proj-grid{grid-template-columns:1fr;} }
+  .proj{margin-bottom:0; padding-bottom:14px; border-bottom:1px solid var(--rule);}
+  .proj-grid > .proj:nth-last-child(-n+2){border-bottom:none;}
+  @media (max-width:720px){
+    .proj-grid > .proj{border-bottom:1px solid var(--rule); padding-bottom:14px;}
+    .proj-grid > .proj:last-child{border-bottom:none;}
+  }
+  .proj:last-child{margin-bottom:0;}
+  .proj-title{font-weight:600; font-size:15.5px;}
+  .proj-year{color:var(--muted); font-weight:normal; font-size:14px;}
+  .proj ul{margin-top:6px; margin-bottom:0;}
+
+  /* skills */
+  .skill-row{margin-bottom:8px; font-size:15px;}
+  .skill-row strong{display:inline-block; min-width:150px;}
+
+  /* education */
+  .edu{margin-bottom:14px;}
+  .edu:last-child{margin-bottom:0;}
+  .edu-title{font-weight:600; font-size:15.5px;}
+  .edu-meta{color:var(--muted); font-size:14px;}
+
+  /* honors */
+  .honors-list{list-style:none; padding:0; margin:0;}
+  .honors-list li{
+    display:grid; grid-template-columns:80px 1fr; gap:10px;
+    margin-bottom:6px; font-size:15px;
+  }
+  .honors-list .yr{color:var(--muted); font-size:14px;}
+
+  footer{
+    margin-top:56px; padding-top:18px; border-top:1px solid var(--rule);
+    font-size:13px; color:var(--muted);
+  }
+
+  @media (max-width:520px){
+    .header-top{flex-direction:column;}
+    .news-list li, .honors-list li{grid-template-columns:1fr;}
+    .news-list .date, .honors-list .yr{margin-bottom:2px;}
+  }
+</style>
 </head>
 <body>
-    <header>
-        <h1>Ayesha Tabassum</h1>
-        <p>Psychology Professional | Human Resources | Researcher</p>
-    </header>
+<div class="wrap">
 
-    <div class="container">
-        <section id="about">
-            <h2>About Me</h2>
-            <p>Hello! I am a final-year BS Psychology student with a strong focus on organizational behavior, human resource management, and quantitative research. I am passionate about understanding human behavior to drive positive workplace cultures, effective recruitment strategies, and mental health awareness.</p>
-        </section>
+  <header>
+    <div class="header-top">
+      <img class="avatar" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23eef1f4'/><circle cx='50' cy='40' r='20' fill='%23c0c5cb'/><path d='M20 100 Q 50 60 80 100' fill='%23c0c5cb'/></svg>" alt="Ayesha Tabassum">
+      <div class="header-info">
+        <h1>Ayesha Tabassum</h1><!--[cite: 4] -->
+        <div class="line">B.S. in Psychology (2023–2027)</div><!--[cite: 4] -->
+        <div class="line">International Islamic University, Islamabad, Pakistan</div><!--[cite: 4] -->
+        <div class="line">Millennium Fellow | Ambassador, YPS</div><!--[cite: 6] -->
+        <div class="contact-links">
+          <a href="mailto:ayeshatabassum34501@gmail.com">Email</a><!--[cite: 4] -->
+          <a href="tel:+923328868772">+92-332-8868772</a><!--[cite: 4] -->
+          <a href="https://github.com/ayeshatabassum34501-dev" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://www.linkedin.com/in/ayesha-tabassum-174406306" target="_blank" rel="noopener">LinkedIn</a><!--[cite: 4] -->
+          <a href="Ayesha_Tabassum_CV.pdf" target="_blank" rel="noopener">CV (PDF)</a>
+        </div>
+      </div>
+    </div>
+    
+    <nav class="section-nav">
+      <a href="#about">About</a>
+      <a href="#news">News</a>
+      <a href="#education">Education</a>
+      <a href="#experience">Experience</a>
+      <a href="#volunteering">Volunteering</a>
+      <a href="#leadership">Leadership</a>
+      <a href="#projects">Projects</a>
+      <a href="#honors">Awards</a>
+      <a href="#skills">Skills</a>
+      <a href="#mentors">Mentors</a>
+    </nav>
+  </header>
 
-        <section id="experience">
-            <h2>Experience & Projects</h2>
-            <ul>
-                <li><strong>Human Resources Intern</strong> - GAO Tek Inc.</li>
-                <li><strong>Clinical Intern</strong> - Children's Hospital PIMS</li>
-                <li><strong>Student Ambassador</strong> - Young Psychologists Society</li>
-                <li><strong>Undergraduate Research:</strong> "The Role of Psychological Modulation and Emotional Regulation in Pain Perception among Young Adults"</li>
-                <li><strong>Project Management:</strong> "The Memorandum" (Academic short film on workplace HR investigations)</li>
-            </ul>
-        </section>
+  <section id="about">
+    <h2>About Me</h2>
+    <p>Final-year Psychology student trained in psychological research, quantitative data analysis, and hands-on community work, with a growing focus to constructive social change.<!--[cite: 4, 7] --> Interested in how emotion regulation, communication, and interpersonal processes shape conflict, cooperation, and well-being within social environments.<!--[cite: 4, 8] --> Seeking to develop this perspective through Erasmus Mundus SPOT's interdisciplinary approach to social transformation.<!--[cite: 4] --></p>
+  </section>
 
-        <section id="contact">
-            <h2>Get in Touch</h2>
-            <p>Email: <a href="mailto:your.email@example.com">Add your email here</a></p>
-            <p>LinkedIn: <a href="#">Add your LinkedIn link here</a></p>
-        </section>
+  <section id="news">
+    <h2>News</h2>
+    <ul class="news-list">
+      <li><span class="date">2026</span><span>Defended Undergraduate Research Project on Psychological Modulation and Emotion Regulation.<!--[cite: 4] --></span></li>
+      <li><span class="date">2025</span><span>Started working as Clinical Intern at <strong>Pakistan Institute of Medical Sciences (PIMS)</strong>, Islamabad.<!--[cite: 5] --></span></li>
+      <li><span class="date">2026</span><span>Started working as HR Intern at <strong>GAO Tek Inc.</strong>, Remote.<!--[cite: 5] --></span></li>
+      <li><span class="date">2026</span><span>Started Intern Volunteer Management Department program at <strong>Alkhidmat Foundation Pakistan</strong>.<!--[cite: 5] --></span></li>
+      <li><span class="date">2025</span><span>Appointed Ambassador at <strong>Young Psychologists Society (YPS)</strong>.<!--[cite: 6] --></span></li>
+      <li><span class="date">2026</span><span>Selected for the global <strong>Millennium Fellowship - Class of 2026</strong>.<!--[cite: 6] --></span></li>
+    </ul>
+  </section>
+
+  <section id="education">
+    <h2>Education &amp; Training</h2>
+    <div class="edu">
+      <div class="edu-title">B.S. in Psychology</div>
+      <div class="edu-meta">International Islamic University, Islamabad, Pakistan &middot; 01/02/2023 &ndash; Current &middot; CGPA 3.98/4.00<!--[cite: 4] --></div>
+      <div class="tools-line"><strong>Relevant Coursework:</strong> Social Psychology, Community Psychology, Personality Theories, Research Methodology I & II, Applied Statistics I & II, Psychological Testing I & II, Experimental Psychology, Introduction to Management, Human Resource Management<!--[cite: 4] --></div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <h2>Work Experience</h2>
+
+    <div class="job">
+      <div class="job-title">Clinical Intern | Psychiatric OPD &amp; Autism Clinic</div>
+      <div class="job-meta">Pakistan Institute of Medical Sciences (PIMS), Islamabad &middot; 01/03/2025 &ndash; 31/12/2025<!--[cite: 5] --></div>
+      <div class="tools-line"><strong>Supervisor:</strong> Assist. Prof. Dr. Hafiz Sultan Muhammad<!--[cite: 5] --></div>
+      <ul>
+        <li>Analyzed psychiatric and neurodevelopmental cases, developing practical understanding of how psychological difficulties and systematic barriers affect family and community well-being.<!--[cite: 5] --></li>
+        <li>Examined interpersonal communication patterns and behavioral responses, developing practical understanding of how social and environmental stressors influence vulnerable individuals and their behavioral functioning.<!--[cite: 5] --></li>
+        <li>Performed supervised case-history taking and clinical documentation, translating patient interactions into structured reports, strengthening skills relevant to assessment and psychosocial support.<!--[cite: 5] --></li>
+      </ul>
     </div>
 
-    <footer>
-        <p>&copy; 2026 Ayesha Tabassum. Built with GitHub Pages.</p>
-    </footer>
+    <div class="job">
+      <div class="job-title">HR Intern</div>
+      <div class="job-meta">GAO Tek Inc., Remote (Pakistan) &middot; 15/03/2026 &ndash; 15/08/2026<!--[cite: 5] --></div>
+      <ul>
+        <li>Sourced and screened 10+ international candidates across recruitment pipelines, using cross-cultural communication frameworks to assess candidate fit and reduce evaluation bias.<!--[cite: 5] --></li>
+        <li>Evaluated communication dynamics, candidate responses and role expectations, providing behavioral insights that helped the organization make more inclusive decisions to support diverse talent.<!--[cite: 5] --></li>
+        <li>Managed interview workflows and recruitment documentation through email, Microsoft Teams and Outlook, assisting timely communication to increase candidate engagement and trust.<!--[cite: 5] --></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="volunteering">
+    <h2>Volunteering &amp; Community Work</h2>
+
+    <div class="job">
+      <div class="job-title">Intern Volunteer Management Department</div>
+      <div class="job-meta">Alkhidmat Foundation Pakistan &middot; 14/07/2026 &ndash; 05/09/2026<!--[cite: 5] --></div>
+      <ul>
+        <li>Completed certified training in Psychological First Aid, humanitarian response and emergency preparedness to strengthen understanding of psychosocial support and community resilience, and guided 25+ student interns through practical field simulations.<!--[cite: 5] --></li>
+        <li>Contributed to climate-resilience and disaster-risk-reduction activities (urban greening and plantation drives), to promote environmental responsibility and collective engagement.<!--[cite: 5] --></li>
+        <li>Led a team of fellow interns in delivering psychosocial and foundational educational activities in Child Protection Center, re-engaged 120+ street-connected & vulnerable children using interactive learning tools (play therapy, sports, writing exercises, distributing gifts) to increase social inclusion and cooperation.<!--[cite: 5] --></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="leadership">
+    <h2>Leadership &amp; Management Experience</h2>
+
+    <div class="job">
+      <div class="job-title">Ambassador</div>
+      <div class="job-meta">Young Psychologists Society (YPS) &middot; 05/12/2025 &ndash; 05/04/2026<!--[cite: 6] --></div>
+      <ul>
+        <li>Promoted mental-health and psychosocial support through webinars, online workshops, and courses, encouraging open discussion of mental health and youth engagement beyond the university setting.<!--[cite: 6] --></li>
+        <li>Used social media (LinkedIn, Instagram, Facebook) as a community-awareness tool, turning the psychological concepts into simple, accessible messages for young audience.<!--[cite: 6] --></li>
+      </ul>
+    </div>
+    
+    <div class="job">
+      <div class="job-title">Millennium Fellow - Class of 2026 | SDG 3: Good Health &amp; Well-being</div>
+      <div class="job-meta">United Nations Academic Impact and Millennium Campus Network<!--[cite: 6] --></div>
+      <div class="tools-line"><strong>Project:</strong> Healthy Homes, Stronger Minds<!--[cite: 6] --></div>
+      <ul>
+        <li>Secured global fellowship and proposed a community-initiative project, "Healthy Homes, Stronger Minds" to address emotional neglect, family conflicts and empathy deficits.<!--[cite: 6] --></li>
+        <li>Facilitated discussions and workshops, using constructive-conflict skills - active listening, emotional-expression, perspective-taking, and respectful disagreement to shape healthy behaviors and strengthen cooperation within families and communities.<!--[cite: 6] --></li>
+        <li>Engaged 90-100 participants (parents, teenagers, and young adults), through awareness circles focused on emotional literacy, conflict resolution, supportive communication, and healthier family interactions.<!--[cite: 6] --></li>
+        <li>Evaluated the intervention through pre- and post-session responses to assess the understanding, recording a 40% measurable improvement.<!--[cite: 6] --></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Research Experience &amp; Projects</h2>
+
+    <div class="proj-grid">
+      <div class="proj">
+        <div class="proj-title">The Role of Psychological Modulation and Emotion Regulation in Pain Perception among Young Adults (2026)<!--[cite: 4] --></div>
+        <div class="tools-line"><strong>Supervisor:</strong> Dr. Nazia Iqbal | <strong>Tools:</strong> IBM SPSS, PSS-10, PCS, ERQ, NRS<!--[cite: 4] --></div>
+        <ul>
+          <li>Investigated the relationships between perceived stress, pain catastrophizing, emotion regulation, and pain perception in young adults using a correlational cross-sectional design.<!--[cite: 4] --></li>
+          <li>Collected questionnaire-based data from 151 undergraduate students using the PSS-10, PCS, ERQ, NRS, and demographic sheet through convenience sampling.<!--[cite: 4] --></li>
+          <li>Analyzed data in IBM SPSS using descriptive statistics, Cronbach's alpha, Pearson correlations, multiple regression, hierarchical moderation analysis, and independent-samples t-tests.<!--[cite: 4] --></li>
+          <li>Found that perceived stress and pain catastrophizing significantly predicted pain perception, with the model explaining 41.7% of variance.<!--[cite: 4] --></li>
+          <li>Authored an APA-style research paper and defended it before a 3-member departmental committee, receiving an A grade.<!--[cite: 4] --></li>
+        </ul>
+      </div>
+
+      <div class="proj">
+        <div class="proj-title">Quantitative Data Analysis Projects<!--[cite: 4] --></div>
+        <div class="tools-line"><strong>Tools:</strong> IBM SPSS, Descriptive Statistics, Pearson Correlation, Multiple Regression, t-tests<!--[cite: 4] --></div>
+        <ul>
+          <li><strong>Social Media Usage and Mental Health:</strong> Analyzed an online secondary dataset of 1,000 participants using descriptive statistics, Pearson correlation, and independent-samples t-tests to examine anxiety, mood, and productivity.<!--[cite: 4] --></li>
+          <li><strong>Sleep Quality and Academic Performance:</strong> Examined the relationship between sleep quality and academic performance using descriptive statistics, correlational analysis and group comparisons.<!--[cite: 4] --></li>
+          <li><strong>Employee Engagement as a Predictor of Workplace Outcomes:</strong> Applied multiple regression analysis to examine employee engagement as a predictor of workplace outcomes.<!--[cite: 4] --></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  
+  <section id="honors">
+    <h2>Awards &amp; Achievements</h2>
+    <ul class="honors-list">
+      <li><span class="yr">2026</span><span><strong>Millennium Fellowship - Class of 2026</strong>: <span class="blue">Selected for the global undergraduate leadership program based on leadership potential and dedication for global Impact.</span><!--[cite: 6] --></span></li>
+      <li><span class="yr">2026</span><span><strong>Higher Achiever Award</strong>: <span class="blue">Alkhidmat Foundation Pakistan - Recognized for strong performance and engagement during the six-week Summer Internship Program.</span><!--[cite: 6] --></span></li>
+      <li><span class="yr">2025</span><span><strong>Prime Minister's Youth Laptop Award</strong>: <span class="blue">Received a merit-based laptop on outstanding academic performance.</span><!--[cite: 6] --></span></li>
+      <li><span class="yr">2023–27</span><span><strong>High Academic Distinction</strong>: <span class="blue">Maintaining a high academic standing (3.98/4.00) throughout the BS Psychology degree.</span><!--[cite: 6] --></span></li>
+    </ul>
+  </section>
+
+  <section id="skills">
+    <h2>Skills &amp; Languages</h2>
+    <div class="skill-row"><strong>Research &amp; Methodological</strong> Quantitative Research Methods, Survey Design and Data Collection, Research Report Writing, Questionnaire-based Research, Literature Review<!--[cite: 6] --></div>
+    <div class="skill-row"><strong>Analytical &amp; Technical</strong> IBM SPSS Statistics, Quantitative Data Analysis, Correlation Analysis, Multiple Regression, Moderation Analysis, Independent Samples t-tests, Microsoft Office Suite, Google Workspace<!--[cite: 6] --></div>
+    <div class="skill-row"><strong>Language Skills</strong> Punjabi (Mother tongue), Urdu (C1), English (C1)<!--[cite: 6] --></div>
+  </section>
+
+  <section id="mentors">
+    <h2>Collaborators &amp; Mentors</h2>
+    <div class="edu">
+      <div class="edu-title">Dr. Nazia Iqbal</div>
+      <div class="edu-meta">Supervisor, Undergraduate Research Project, International Islamic University Islamabad<!--[cite: 4] --></div>
+    </div>
+    <div class="edu">
+      <div class="edu-title">Assist. Prof. Dr. Hafiz Sultan Muhammad</div>
+      <div class="edu-meta">Supervisor, Psychiatric OPD & Autism Clinic, Pakistan Institute of Medical Sciences (PIMS)<!--[cite: 5] --></div>
+    </div>
+  </section>
+
+  <footer>
+    © Ayesha Tabassum. Built with GitHub Pages.
+  </footer>
+
+</div>
 </body>
 </html>
+   
+ 
+
+  
+
+ 
+  
+
+   
+        
+     
+    
+      
+           
+       
